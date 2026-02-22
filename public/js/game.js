@@ -15,6 +15,7 @@
     selectedAnswer: null,
     timerInterval: null,
     timeLeft: ROUND_TIME_SECONDS,
+    timerEnabled: true,
     roundCount: 0,
     gameMode: 'family',
     specialEvent: null
@@ -153,6 +154,9 @@
     const selectedMode = document.querySelector('input[name="gamemode"]:checked');
     const gameMode = selectedMode ? selectedMode.value : 'family';
 
+    const timerEnabledInput = document.getElementById('timer-enabled');
+    gameState.timerEnabled = timerEnabledInput ? Boolean(timerEnabledInput.checked) : true;
+
     gameState.players = players;
     gameState.scores = {};
     players.forEach((p) => {
@@ -171,6 +175,11 @@
     updateEnergyMeter();
     updateTimeWeather();
     updateBackground();
+
+    const timerContainer = document.getElementById('timer-container');
+    if (timerContainer) {
+      timerContainer.style.display = gameState.timerEnabled ? '' : 'none';
+    }
 
     showPage('game');
   }
@@ -229,6 +238,16 @@
 
     gameState.selectedAnswer = null;
     document.querySelectorAll('.answer-box').forEach((box) => box.classList.remove('selected'));
+
+    if (!gameState.timerEnabled) {
+      gameState.timeLeft = ROUND_TIME_SECONDS;
+      const timerBar = document.getElementById('timer-bar');
+      if (timerBar) timerBar.style.width = '100%';
+      const timerText = document.getElementById('timer-text');
+      if (timerText) timerText.innerText = '';
+      gameState.timerInterval = null;
+      return;
+    }
 
     gameState.timeLeft = ROUND_TIME_SECONDS;
     const timerText = document.getElementById('timer-text');

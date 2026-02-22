@@ -125,6 +125,17 @@
 					</div>
 				</div>
 
+				<div class="game-mode-section">
+					<h3 class="handwritten">Timer:</h3>
+					<div class="mode-options">
+						<label class="sketch-radio">
+							<input type="checkbox" id="timer-enabled" checked />
+							<span class="radio-custom"></span>
+							<span class="handwritten">Use 30s timer</span>
+						</label>
+					</div>
+				</div>
+
 				<div class="setup-buttons">
 					<button id="back-to-cover" class="sketch-button">
 						<span class="handwritten">← Back</span>
@@ -217,7 +228,7 @@
 						</div>
 
 						<div class="game-controls">
-							<div class="timer-container">
+							<div class="timer-container" id="timer-container">
 								<div class="timer-bar" id="timer-bar" style="width: 100%;"></div>
 								<span class="timer-text" id="timer-text">10</span>
 							</div>
