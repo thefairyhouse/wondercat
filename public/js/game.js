@@ -1,4 +1,6 @@
 (function () {
+  const ROUND_TIME_SECONDS = 30;
+
   const gameState = {
     currentPage: 'cover',
     players: [],
@@ -12,7 +14,7 @@
     displayedAnswers: [],
     selectedAnswer: null,
     timerInterval: null,
-    timeLeft: 10,
+    timeLeft: ROUND_TIME_SECONDS,
     roundCount: 0,
     gameMode: 'family',
     specialEvent: null
@@ -228,13 +230,13 @@
     gameState.selectedAnswer = null;
     document.querySelectorAll('.answer-box').forEach((box) => box.classList.remove('selected'));
 
-    gameState.timeLeft = gameState.gameMode === 'chaos' ? 5 : 10;
+    gameState.timeLeft = ROUND_TIME_SECONDS;
     const timerText = document.getElementById('timer-text');
     const timerBar = document.getElementById('timer-bar');
     if (timerText) timerText.innerText = String(gameState.timeLeft);
     if (timerBar) timerBar.style.width = '100%';
 
-    const maxTime = gameState.gameMode === 'chaos' ? 5 : 10;
+    const maxTime = ROUND_TIME_SECONDS;
 
     gameState.timerInterval = setInterval(function () {
       gameState.timeLeft = Math.max(0, gameState.timeLeft - 0.1);
@@ -479,7 +481,7 @@
     gameState.correctAnswer = null;
     gameState.displayedAnswers = [];
     gameState.selectedAnswer = null;
-    gameState.timeLeft = 10;
+    gameState.timeLeft = ROUND_TIME_SECONDS;
     gameState.roundCount = 0;
     gameState.gameMode = 'family';
     gameState.specialEvent = null;
