@@ -4,137 +4,263 @@
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Where's Wondercat? A little site about finding Wondercat." />
-		<title>Where's Wondercat?</title>
+		<meta name="description" content="Where's WonderCat? A storybook-style party game." />
+		<title>What&rsquo;s WonderCat Doing?</title>
+		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="/css/sketch-styles.css" />
+		<link rel="stylesheet" href="/css/animations.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<main>
-			<header>
-				<p class="eyebrow">wondercat.co.uk</p>
-				<h1>Where&rsquo;s Wondercat?</h1>
-				<p class="lede">A tiny corner of the internet. Coming soon.</p>
-			</header>
+		<div id="page-cover" class="page active">
+			<div class="sketch-border"></div>
 
-			<section class="card">
-				<h2>Status</h2>
-				<p>
-					The website is live and wired up for deployments. Next step: building the first real experience.
-				</p>
-				<div class="meta">
-					<span>GitHub: thefairyhouse/wondercat</span>
-					<span>Hosting: Vercel</span>
+			<div class="cover-content">
+				<h1 class="title-handwritten">What&rsquo;s WonderCat</h1>
+				<h1 class="title-handwritten large">Doing?</h1>
+
+				<div class="wonder-cover-container" id="start-game-trigger">
+					<div class="wonder-illustration" id="wonder-cover">
+						<svg viewBox="0 0 300 400" class="wonder-svg">
+							<ellipse cx="150" cy="220" rx="70" ry="90" fill="#8A9EA3" stroke="#4A4A4A" stroke-width="2" stroke-dasharray="4 2" />
+							<ellipse cx="150" cy="250" rx="50" ry="60" fill="#C0CFD1" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="4 2" />
+							<circle cx="150" cy="130" r="50" fill="#8A9EA3" stroke="#4A4A4A" stroke-width="2" stroke-dasharray="4 2" />
+							<polygon points="115,90 135,100 125,115" fill="#8A9EA3" stroke="#4A4A4A" stroke-width="2" />
+							<polygon points="185,90 165,100 175,115" fill="#8A9EA3" stroke="#4A4A4A" stroke-width="2" />
+							<circle cx="130" cy="120" r="8" fill="#E3A857" stroke="#4A4A4A" stroke-width="1" />
+							<circle cx="170" cy="120" r="8" fill="#E3A857" stroke="#4A4A4A" stroke-width="1" />
+							<ellipse cx="150" cy="145" rx="20" ry="8" fill="#D47B8D" stroke="#4A4A4A" stroke-width="1" />
+							<line x1="100" y1="135" x2="70" y2="130" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="2 2" />
+							<line x1="100" y1="145" x2="70" y2="150" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="2 2" />
+							<line x1="200" y1="135" x2="230" y2="130" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="2 2" />
+							<line x1="200" y1="145" x2="230" y2="150" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="2 2" />
+							<path d="M130 70 Q150 30, 170 70" fill="#B22234" stroke="#4A4A4A" stroke-width="2" />
+							<text x="140" y="55" fill="#FFD700" font-family="Caveat" font-size="30" font-weight="bold">W</text>
+							<path
+								d="M110 180 Q120 140, 190 140 Q200 180, 150 200 Q110 180, 110 180"
+								fill="#B22234"
+								stroke="#4A4A4A"
+								stroke-width="2"
+								opacity="0.8"
+							/>
+						</svg>
+					</div>
+					<p class="handwritten click-prompt">click on Wonder to begin</p>
 				</div>
-			</section>
+			</div>
 
-			<footer>
-				<p class="fine">© {new Date().getFullYear()} Wondercat</p>
-			</footer>
-		</main>
+			<div class="decorative-border">
+				<span class="toy">🧶</span>
+				<span class="toy">🪶</span>
+				<span class="toy">🐟</span>
+				<span class="toy">🐁</span>
+			</div>
+		</div>
 
-		<style>
-			:global(html) {
-				color-scheme: light;
-				background: radial-gradient(1200px 800px at 15% 10%, #fff5f7 0%, #ffffff 35%, #f7fbff 100%);
-				font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-					Arial, "Apple Color Emoji", "Segoe UI Emoji";
-			}
+		<div id="page-setup" class="page">
+			<div class="sketch-border"></div>
 
-			body {
-				margin: 0;
-				min-height: 100vh;
-				display: grid;
-				place-items: center;
-				padding: 32px 16px;
-				color: #0f172a;
-			}
+			<div class="setup-content">
+				<h2 class="handwritten section-title">Who&rsquo;s playing today?</h2>
+				<div class="underline-sketch"></div>
 
-			main {
-				width: 100%;
-				max-width: 860px;
-				display: grid;
-				gap: 24px;
-			}
+				<div class="players-container">
+					<div class="player-input-row" id="player1-row">
+						<div class="player-avatar tabby"></div>
+						<input type="text" id="player1" placeholder="Player 1 name" class="sketch-input" />
+						<div class="avatar-selector" data-player="1">▼</div>
+					</div>
 
-			header {
-				display: grid;
-				gap: 10px;
-			}
+					<div class="player-input-row" id="player2-row">
+						<div class="player-avatar ginger"></div>
+						<input type="text" id="player2" placeholder="Player 2 name" class="sketch-input" />
+						<div class="avatar-selector" data-player="2">▼</div>
+					</div>
 
-			.eyebrow {
-				margin: 0;
-				font-size: 14px;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-				color: #475569;
-			}
+					<div class="player-input-row hidden" id="player3-row">
+						<div class="player-avatar tuxedo"></div>
+						<input type="text" id="player3" placeholder="Player 3 name" class="sketch-input" />
+						<div class="avatar-selector" data-player="3">▼</div>
+					</div>
 
-			h1 {
-				margin: 0;
-				font-size: clamp(40px, 6vw, 64px);
-				line-height: 1.05;
-				letter-spacing: -0.03em;
-			}
+					<div class="player-input-row hidden" id="player4-row">
+						<div class="player-avatar calico"></div>
+						<input type="text" id="player4" placeholder="Player 4 name" class="sketch-input" />
+						<div class="avatar-selector" data-player="4">▼</div>
+					</div>
 
-			.lede {
-				margin: 0;
-				font-size: 18px;
-				line-height: 1.5;
-				color: #334155;
-			}
+					<button id="add-player-btn" class="sketch-button-small">
+						<span class="handwritten">+ Add another player</span>
+					</button>
+				</div>
 
-			.card {
-				background: rgba(255, 255, 255, 0.75);
-				border: 1px solid rgba(15, 23, 42, 0.08);
-				border-radius: 18px;
-				padding: 20px;
-				box-shadow:
-					0 1px 1px rgba(15, 23, 42, 0.05),
-					0 18px 40px rgba(15, 23, 42, 0.08);
-				backdrop-filter: blur(10px);
-			}
+				<div class="game-mode-section">
+					<h3 class="handwritten">Game Mode:</h3>
+					<div class="mode-options">
+						<label class="sketch-radio">
+							<input type="radio" name="gamemode" value="family" checked />
+							<span class="radio-custom"></span>
+							<span class="handwritten">Family</span>
+						</label>
+						<label class="sketch-radio">
+							<input type="radio" name="gamemode" value="chaos" />
+							<span class="radio-custom"></span>
+							<span class="handwritten">Chaos</span>
+						</label>
+						<label class="sketch-radio">
+							<input type="radio" name="gamemode" value="story" />
+							<span class="radio-custom"></span>
+							<span class="handwritten">Story</span>
+						</label>
+						<label class="sketch-radio">
+							<input type="radio" name="gamemode" value="solo" />
+							<span class="radio-custom"></span>
+							<span class="handwritten">Solo</span>
+						</label>
+					</div>
+				</div>
 
-			.card h2 {
-				margin: 0 0 10px 0;
-				font-size: 18px;
-				letter-spacing: -0.01em;
-			}
+				<div class="setup-buttons">
+					<button id="back-to-cover" class="sketch-button">
+						<span class="handwritten">← Back</span>
+					</button>
+					<button id="start-game-btn" class="sketch-button primary">
+						<span class="handwritten">Start Game!</span>
+					</button>
+				</div>
+			</div>
 
-			.card p {
-				margin: 0;
-				color: #334155;
-				line-height: 1.6;
-			}
+			<div class="wonder-watching">
+				<svg width="80" height="80" viewBox="0 0 80 80">
+					<circle cx="40" cy="40" r="25" fill="#8A9EA3" stroke="#4A4A4A" stroke-width="2" />
+					<circle cx="30" cy="35" r="4" fill="#E3A857" />
+					<circle cx="50" cy="35" r="4" fill="#E3A857" />
+					<path d="M35 50 Q40 55, 45 50" stroke="#4A4A4A" fill="none" />
+					<rect x="20" y="20" width="10" height="5" fill="#B22234" transform="rotate(45 25 22)" />
+				</svg>
+			</div>
+		</div>
 
-			.meta {
-				margin-top: 14px;
-				display: flex;
-				flex-wrap: wrap;
-				gap: 8px;
-				color: #475569;
-				font-size: 14px;
-			}
+		<div id="page-game" class="page">
+			<div class="game-top-bar">
+				<div class="game-title">
+					<span class="handwritten">What&rsquo;s WonderCat Doing?</span>
+				</div>
+				<div class="players-score" id="players-score-container"></div>
+			</div>
 
-			.meta span {
-				padding: 6px 10px;
-				border-radius: 999px;
-				background: rgba(15, 23, 42, 0.05);
-				border: 1px solid rgba(15, 23, 42, 0.06);
-			}
+			<div class="game-main-area">
+				<div class="energy-meter-container">
+					<div class="meter-label handwritten">Wonder&rsquo;s Energy</div>
+					<div class="meter-wrapper">
+						<div class="meter-bar" id="energy-bar"></div>
+					</div>
+					<div class="energy-status" id="energy-status">
+						<span class="status-icon">🎾</span>
+						<span class="status-text handwritten">Playful</span>
+						<span class="percentage" id="energy-percentage">65%</span>
+					</div>
+				</div>
 
-			footer {
-				padding-top: 8px;
-			}
+				<div class="game-center">
+					<div class="time-weather-container">
+						<div class="time-display" id="time-display">
+							<span class="time-icon" id="time-icon">☀️</span>
+							<span class="time-text handwritten" id="time-text">Afternoon</span>
+						</div>
+						<div class="weather-display" id="weather-display">
+							<span class="weather-icon" id="weather-icon">☁️</span>
+							<span class="weather-text handwritten" id="weather-text">Cloudy</span>
+						</div>
+					</div>
 
-			.fine {
-				margin: 0;
-				font-size: 13px;
-				color: #64748b;
-			}
-		</style>
+					<div class="wonder-card" id="wonder-card">
+						<div class="card-sketch-border">
+							<div class="card-header">
+								<span class="handwritten">Wonder</span>
+							</div>
+							<div class="card-image" id="card-image"></div>
+							<div class="card-text handwritten" id="card-text">goes outside</div>
+							<div class="wonder-peek">
+								<svg width="30" height="30" viewBox="0 0 30 30">
+									<circle cx="15" cy="15" r="10" fill="#8A9EA3" />
+									<circle cx="11" cy="12" r="2" fill="#E3A857" />
+									<circle cx="19" cy="12" r="2" fill="#E3A857" />
+								</svg>
+							</div>
+						</div>
+					</div>
+
+					<div class="answers-container">
+						<div class="answers-prompt handwritten">What happened this time?</div>
+						<div class="answer-options">
+							<div class="answer-box" id="answer-a" data-answer="A">
+								<div class="answer-letter handwritten">A</div>
+								<div class="answer-text" id="answer-a-text"></div>
+								<div class="answer-icon" id="answer-a-icon"></div>
+							</div>
+							<div class="answer-box" id="answer-b" data-answer="B">
+								<div class="answer-letter handwritten">B</div>
+								<div class="answer-text" id="answer-b-text"></div>
+								<div class="answer-icon" id="answer-b-icon"></div>
+							</div>
+							<div class="answer-box" id="answer-c" data-answer="C">
+								<div class="answer-letter handwritten">C</div>
+								<div class="answer-text" id="answer-c-text"></div>
+								<div class="answer-icon" id="answer-c-icon"></div>
+							</div>
+						</div>
+
+						<div class="game-controls">
+							<div class="timer-container">
+								<div class="timer-bar" id="timer-bar" style="width: 100%;"></div>
+								<span class="timer-text" id="timer-text">10</span>
+							</div>
+							<button class="lock-btn sketch-button-small" id="lock-guess">
+								<span class="handwritten">🔒 Lock In</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="background-window" id="background-window"></div>
+			<div class="wonder-silhouette" id="wonder-silhouette"></div>
+		</div>
+
+		<div id="page-victory" class="page">
+			<div class="sketch-border"></div>
+			<div class="victory-content">
+				<h2 class="handwritten large winner-title" id="winner-name">Cat Friend wins!</h2>
+				<div class="victory-illustration">
+					<svg width="250" height="300" viewBox="0 0 250 300">
+						<ellipse cx="125" cy="200" rx="60" ry="70" fill="#8A9EA3" stroke="#4A4A4A" stroke-width="2" />
+						<ellipse cx="125" cy="220" rx="40" ry="45" fill="#C0CFD1" stroke="#4A4A4A" stroke-width="1" />
+						<circle cx="125" cy="120" r="45" fill="#8A9EA3" stroke="#4A4A4A" stroke-width="2" />
+						<path d="M85 70 L105 40 L125 70 L145 40 L165 70" fill="#FFD700" stroke="#4A4A4A" stroke-width="2" />
+						<path d="M95 120 Q75 150, 85 200" fill="#B22234" stroke="#4A4A4A" stroke-width="2" />
+						<path d="M155 120 Q175 150, 165 200" fill="#B22234" stroke="#4A4A4A" stroke-width="2" />
+						<circle cx="110" cy="110" r="5" fill="#E3A857" />
+						<circle cx="140" cy="110" r="5" fill="#E3A857" />
+						<ellipse cx="125" cy="130" rx="15" ry="5" fill="#D47B8D" />
+					</svg>
+				</div>
+				<div class="final-scores" id="final-scores"></div>
+				<div class="victory-buttons">
+					<button id="play-again-btn" class="sketch-button primary"><span class="handwritten">Play Again</span></button>
+					<button id="new-players-btn" class="sketch-button"><span class="handwritten">Change Players</span></button>
+					<button id="back-to-cover-victory" class="sketch-button-small"><span class="handwritten">Cover</span></button>
+				</div>
+			</div>
+			<div class="floating-text">WONDERFUL!</div>
+		</div>
+
+		<script src="/js/cards.js" defer></script>
+		<script src="/js/game.js" defer></script>
 	</body>
 </html>
